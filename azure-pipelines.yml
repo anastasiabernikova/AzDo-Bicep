@@ -4,7 +4,7 @@ trigger:
 - main
 
 variables:
-  resourceGroupName: 'example'
+  resourceGroupName: 'bicep'
   location: 'westeurope'
   azureSubscription: 'AzureConnection'
   resourcePrefix: 'bicep'
