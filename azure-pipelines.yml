@@ -3,7 +3,7 @@ trigger:
 - main
 
 variables:
-  resourceGroupName: 'example'
+  resourceGroupName: 'bicep_new'
   location: 'westeurope'
   azureSubscription: 'nameshname90'
   resourcePrefix: 'bicep'
