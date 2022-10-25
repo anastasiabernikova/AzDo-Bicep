@@ -1,11 +1,12 @@
 name: Bicep-StorageAccount-PrivateEndpoint
+
 trigger:
 - main
 
 variables:
-  resourceGroupName: 'bicep_new'
+  resourceGroupName: 'example'
   location: 'westeurope'
-  azureSubscription: 'azureConnection'
+  azureSubscription: 'AzureConnection'
   resourcePrefix: 'bicep'
 
 pool:
@@ -16,20 +17,21 @@ stages:
   jobs:
   - job: Build
     steps:
+    
     - task: AzureCLI@2  
       displayName: 'build bicep artifact' 
       inputs: 
         azureSubscription: $(azureSubscription) 
         scriptType: 'pscore'  
         scriptLocation: 'inlineScript'  
-        inlineScript: 'az bicep build --file main.bicep'  
+        inlineScript: 'az bicep build --file main.bicep'
 
     - task: PublishBuildArtifacts@1 
       displayName: 'Publish artifact in pipeline' 
       inputs: 
         PathtoPublish: '$(Build.SourcesDirectory)/main.json'  
         ArtifactName: 'finishedTemplate'  
-        publishLocation: 'Container' 
+        publishLocation: 'Container'            
 
 - stage: deploy
   jobs:
@@ -53,4 +55,4 @@ stages:
                 --template-file $(Build.SourcesDirectory)/main.bicep `
                 --parameters $(Build.SourcesDirectory)/main.parameters.json `
                 --resource-group $(ResourceGroupName) `
-                --parameters resourcePrefix=$(resourceprefix)
+                --parameters resourcePrefix=$(resourceprefix)         
