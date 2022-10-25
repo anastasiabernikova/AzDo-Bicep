@@ -6,7 +6,7 @@ variables:
   resourceGroupName: 'bicep_new'
   location: 'westeurope'
   azureSubscription: 'azureConnection'
-  resourcePrefix: 'bicep90'
+  resourcePrefix: 'bicep'
 
 pool:
   vmImage: ubuntu-latest
